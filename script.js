@@ -10,29 +10,41 @@ function gridMaker(row, column) {
         // cell.classList.add(`${i+1}`);
         // cell.innerText = (i +1);
         //cell.classList.add("painted-black");
-        cell.setAttribute('id', `${i+1}`);
+        cell.setAttribute('id', `${i + 1}`);
     }
 }
-
-gridMaker(16, 16);
-
-// let painted = document.querySelectorAll(".neutral");
-// painted.addEventListener('mouseover', e => {
-//     cell.classList.add("painted-black");
-// });
-
-// document.getElementById('test01').style.backgroundColor = 'black';
 
 function paintCell() {
     const painted = document.querySelectorAll(".neutral");
     for (let i = 0; i < painted.length; i++) {
         painted[i].addEventListener('mouseover', e => {
             console.log(e);
-            document.getElementById(`${i+1}`).style.backgroundColor = 'gray';
+            document.getElementById(`${i + 1}`).style.backgroundColor = '#424242';
         });
+    }
+    if (draw == false) {
+        return false;
     }
 }
 
-paintCell();
+const cleared = document.getElementById("clear");
+cleared.addEventListener('click', e => {
+    console.log(e);
+    const painted = document.querySelectorAll(".neutral");
+    for (let i = 0; i < painted.length; i++) {
+        document.getElementById(`${i + 1}`).style.backgroundColor = null;
+    }
+})
 
-// cell.classList.add("painted-black");
+const stopButton = document.getElementById("default");
+stopButton.addEventListener('click', e => {
+    draw = false;
+});
+
+const resizeButton = document.getElementById("resize");
+resizeButton.addEventListener('click', e => {
+    console.log(e);
+    
+})
+
+window.onload = gridMaker(16, 16), paintCell();
