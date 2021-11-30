@@ -76,4 +76,4 @@ resizeButton.addEventListener('click', e => {
     // paintCell();
 })
 
-window.onload = gridMaker(16, 16);
+window.onload = gridMaker(16, 16), paintCell();
