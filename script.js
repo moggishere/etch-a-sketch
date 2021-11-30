@@ -7,9 +7,6 @@ function gridMaker(row, column) {
         let cell = document.createElement('div');
         container.appendChild(cell).className = 'gridCell';
         cell.classList.add("neutral");
-        // cell.classList.add(`${i+1}`);
-        // cell.innerText = (i +1);
-        //cell.classList.add("painted-black");
         cell.setAttribute('id', `${i + 1}`);
     }
 }
@@ -18,12 +15,8 @@ function paintCell() {
     const painted = document.querySelectorAll(".neutral");
     for (let i = 0; i < painted.length; i++) {
         painted[i].addEventListener('mouseover', e => {
-            console.log(e);
             document.getElementById(`${i + 1}`).style.backgroundColor = '#424242';
         });
-    }
-    if (draw == false) {
-        return false;
     }
 }
 
@@ -55,11 +48,6 @@ cleared.addEventListener('click', e => {
     }
 })
 
-const stopButton = document.getElementById("default");
-stopButton.addEventListener('click', e => {
-    draw = false;
-});
-
 const resizeButton = document.getElementById("resize");
 resizeButton.addEventListener('click', e => {
     console.log(e);
@@ -73,7 +61,6 @@ resizeButton.addEventListener('click', e => {
     }
 
     gridMaker(userRows, userColumns);
-    // paintCell();
 })
 
 window.onload = gridMaker(16, 16), paintCell();
