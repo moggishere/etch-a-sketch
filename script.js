@@ -44,7 +44,19 @@ stopButton.addEventListener('click', e => {
 const resizeButton = document.getElementById("resize");
 resizeButton.addEventListener('click', e => {
     console.log(e);
-    
+    let userRows = prompt("Input number of rows", "eg. 16");
+    let userColumns = prompt("Input number of columns", "eg. 16");
+
+    const painted = document.querySelectorAll(".neutral");
+    for (let i = 0; i < painted.length; i++) {
+        document.getElementById(`${i + 1}`).remove();
+        // painted[i].addEventListener('mouseover', e => {
+        //     document.getElementById(`${i + 1}`).remove();
+        // });
+    }
+
+    gridMaker(userRows, userColumns);
+    paintCell();
 })
 
 window.onload = gridMaker(16, 16), paintCell();
