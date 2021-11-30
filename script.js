@@ -27,6 +27,25 @@ function paintCell() {
     }
 }
 
+function rainbowCell() {
+    const painted = document.querySelectorAll(".neutral");
+    for (let i =0; i < painted.length; i++) {
+        painted[i].addEventListener('mouseover', e => {
+            document.getElementById(`${i + 1}`).style.backgroundColor = `#${Math.floor(Math.random()*16777215).toString(16)}`;
+        })
+    }
+}
+
+const defaultButton = document.getElementById("default");
+defaultButton.addEventListener('click', e => {
+    paintCell();
+})
+
+const rainbowButton = document.getElementById("rainbow");
+rainbowButton.addEventListener('click', e=> {
+    rainbowCell();
+})
+
 const cleared = document.getElementById("clear");
 cleared.addEventListener('click', e => {
     console.log(e);
@@ -50,13 +69,11 @@ resizeButton.addEventListener('click', e => {
     const painted = document.querySelectorAll(".neutral");
     for (let i = 0; i < painted.length; i++) {
         document.getElementById(`${i + 1}`).remove();
-        // painted[i].addEventListener('mouseover', e => {
-        //     document.getElementById(`${i + 1}`).remove();
-        // });
+        
     }
 
     gridMaker(userRows, userColumns);
-    paintCell();
+    // paintCell();
 })
 
-window.onload = gridMaker(16, 16), paintCell();
+window.onload = gridMaker(16, 16);
